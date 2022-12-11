@@ -1,0 +1,59 @@
+{% extends "pizzas/base.html" %}
+
+{% block content %}
+    {% load static %} 
+    <p style="font-family:serif;font-size:200%;text-align:center;">Pizza: {{ pizza }}</p>
+
+    {% if pizza.id == 1 %}
+        <center><img src="{% static "pizzas/media/hawaiian.jpg" %}" alt="Pizza Logo" width="550" height="350" /></center>
+    {% elif pizza.id == 2 %}
+        <center><img src="{% static "pizzas/media/meatlovers.jpg" %}" alt="Pizza Logo" width="550" height="350" /></center>
+    {% elif pizza.id == 4 %}
+        <center><img src="{% static "pizzas/media/veggie.jpg" %}" alt="Pizza Logo" width="550" height="350" /></center>
+    {% endif %}
+
+    <p style="font-family:serif;font-size:150%;text-align:center;">Toppings</p>
+    
+    <html>
+    <head>
+    <style>
+    div.container {
+    text-align: center;
+    }
+
+    ul.myUL {
+    display: inline-block;
+    text-align: left;
+    }
+    </style>
+    </head>
+    <body>
+    <div class="container">
+        <ul class = "myUL">
+            {% for t in toppings %}
+            <li>
+                <font size="+1">{{ t.topping_name }}</font>
+            </li>
+            {% empty %}
+            <li> There are no toppings listed for this pizza yet. </li>
+            {% endfor %}
+        </ul>
+    </div> 
+    <p>
+        Comments
+    </p>
+    <p>
+        <a href="{% url 'pizzas:new_comment' pizza.id %}">Add a new comment</a>
+    </p>
+    <ul>
+        {% for c in comments %}
+        <li>
+            <font size="+1">{{ c.comment }}</font>
+        </li>
+        {% empty %}
+        <li> There are no comments for this pizza yet. </li>
+        {% endfor %}
+
+    </ul>
+    
+{% endblock content %}

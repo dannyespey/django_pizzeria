@@ -1,0 +1,12 @@
+<title>Danny's Pizzeria</title>
+
+<body style="background-color:rgb(238, 164, 103);">
+<p>
+<h1 style="font-family:serif;font-size:400%;text-align:center;">Danny's Pizzeria</h1>
+<center><font size="+3"><a href="{% url 'pizzas:index' %}">Home</a>
+<a href="{% url 'pizzas:pizzas' %}">Menu</a></font></center>
+</p>
+
+{% block content %}{% endblock content %}
+
+</body>

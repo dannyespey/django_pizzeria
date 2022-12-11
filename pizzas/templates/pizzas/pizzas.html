@@ -1,0 +1,35 @@
+{% extends "pizzas/base.html" %}
+
+{% block content %}
+
+    <p style="font-family:serif;font-size:200%;text-align:center;">Pizzas</p>
+    {% load static %} 
+    <center><img src="{% static "pizzas/media/pizzahomepage.jpg" %}" alt="Pizza Homepage" width="550" height="350" /></center>
+
+    <html>
+    <head>
+    <style>
+    div.container {
+    text-align: center;
+    }
+
+    ul.myUL {
+    display: inline-block;
+    text-align: left;
+    }
+    </style>
+    </head>
+    <body>
+    <div class="container">
+        <ul class="myUL">
+            {% for pizza in pizzas %}
+            <li>
+                <font size="+2"><a href="{% url 'pizzas:pizza' pizza.id %}">{{ pizza }}</a></font>
+            </li>
+            {% empty %}
+            <li>No pizzas have been added yet.</li>
+            {% endfor %}
+        </ul>
+    </div>   
+    
+{% endblock content %}
